@@ -1,0 +1,14 @@
+<ion-view view-title="Calendar">
+  <ion-content>
+  	<div class="card">
+  		<data-date-slider-picker on-select-date="setDate" date-select-var="day.today">
+  		</data-date-slider-picker>
+  	</div>
+  	<div class ="card" ng-if="selectedDay">
+  		<div class="row">
+  			<div class="col col-offset-33" ng-bind="selectedDay">
+  			</div>
+  		</div>
+  	</div>
+  </ion-content>
+</ion-view>
