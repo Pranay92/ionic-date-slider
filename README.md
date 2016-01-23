@@ -2,7 +2,7 @@
 
 Beautiful date picker slider for ionic framework.
 
-<img src="https://github.com/Pranay92/hapi-next/blob/master/ionic.gif" />
+<img src="https://github.com/Pranay92/ionic-date-slider/blob/master/assets/ionic.gif" />
 
 ## Demo
 
