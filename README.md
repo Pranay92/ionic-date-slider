@@ -1,5 +1,8 @@
 # ionic-date-slider
+
 Beautiful date picker slider for ionic framework.
+
+<img src="https://github.com/Pranay92/hapi-next/blob/master/ionic.gif" />
 
 ## Demo
 
