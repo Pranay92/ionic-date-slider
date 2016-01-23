@@ -1,4 +1,4 @@
-  angular.module('directives',[])
+  angular.module('dateSlider',[])
   .directive('dateSliderPicker',['$compile',function($compile){
     
     return {

@@ -1,7 +1,7 @@
 <ion-view view-title="Calendar">
   <ion-content>
   	<div class="card">
-  		<data-date-slider-picker on-select-date="setDate" date-select-var="day.today">
+  		<data-date-slider-picker on-select-date="setDate" total-days="30" date-select-var="day.today">
   		</data-date-slider-picker>
   	</div>
   	<div class ="card" ng-if="selectedDay">

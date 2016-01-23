@@ -1,0 +1,24 @@
+{
+  "name": "ionic-date-slider",
+  "homepage": "https://github.com/Pranay92/ionic-date-slider",
+  "authors": [
+    "Pranay Dubey <pranaydubey3009@gmail.com>"
+  ],
+  "description": "Beautiful date picker slider for ionic projects",
+  "main": "src/ionic-date-slider.js",
+  "moduleType": [],
+  "keywords": [
+    "['ionic'",
+    "'date'",
+    "'date-picker'",
+    "'slider']"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
