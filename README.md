@@ -24,13 +24,13 @@ Beautiful date picker slider for ionic framework.
 
 1. **on-select-date*** - Tells which function to call from the current controller when the user selects a date. As of now it passes an argument with a date string value ````Sat Jan 23 2016````
 
-2. **date-select-var** - Tells the slider which value to watch for when the directive loads and automatically the specified date.
+2. **date-select-var** - Tells the slider which value to watch for when the directive loads and automatically sets the specified date. This defaults to current date if not provided.
 
-3. **total-days** - Tells slider how many days it needs to generate starting from current date.
+3. **total-days** - Tells the slider how many days it needs to generate starting from current date.
 
 ## Heads up
 
-The directive depends on ionic components so you have to make sure you are using an ionic project for this. Also, it does not have its own styling (as of now) so UI might look a different if you're using a different CSS than the default ionic.css
+The directive depends on ionic components so you have to make sure you are using an ionic project for this. Also, it does not have its own styling (as of now) so UI might look a different if you're using a different CSS flavor than the default ionic.css
 
 ## Demo
 
@@ -43,4 +43,4 @@ The directive depends on ionic components so you have to make sure you are using
 
 1. It only supports dates starting from the current date, it will be nice to add support for past dates.
 2. Total no of days supports static date generation, it will be nice to generate future dates as and when user slides through.
-3. Add themes
+3. Add themes and custom styling support.
