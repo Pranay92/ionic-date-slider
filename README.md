@@ -43,4 +43,4 @@ The directive depends on ionic components so you have to make sure you are using
 
 1. It only supports dates starting from the current date, it will be nice to add support for past dates.
 2. Total no of days supports static date generation, it will be nice to generate future dates as and when user slides through.
-3. Add themes and custom styling support.
+3. It only uses css provided by ionic.css. It would be nice to add themes and custom styling support.
