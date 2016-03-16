@@ -6,7 +6,7 @@ Beautiful date picker slider for ionic framework.
 
 ## Installation
 
-1. Do a ````bower install ionic-date-slider````.
+````bower install ionic-date-slider````
 
 ## Usage
 
@@ -22,7 +22,7 @@ Beautiful date picker slider for ionic framework.
 
 ## Attributes
 
-1. **on-select-date** - Tells which function to call from the current controller when the user selects a date. As of now it passes an argument with a date string value ````Sat Jan 23 2016````
+1. **on-select-date** - Tells which function to call from the current controller when the user selects a date. As of now it passes an argument with a date string value like ````"Sat Jan 23 2016"````
 
 2. **date-select-var** - Tells the slider which value to watch for when the directive loads and automatically sets the specified date. This defaults to current date if not provided.
 
