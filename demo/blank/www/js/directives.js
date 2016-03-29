@@ -1,5 +1,5 @@
   angular.module('directives',[])
-  .directive('dateSliderPicker',['$compile',function($compile){
+  .directive('dateSliderPicker',['$compile','$timeout',function($compile,$timeout){
     
     return {
       restrict : 'E',
@@ -10,7 +10,11 @@
             dateVar = $attrs.dateSelectVar,
             valueToWatch,
             configObj,
+            lastDate = new Date(),
+            lastCounter = 0,
             totalDays = ($attrs.totalDays && parseInt($attrs.totalDays)) || 90;
+        
+        $scope.calendar = [];
 
         if(dateVar) {
           initSelectedDate();
@@ -70,13 +74,13 @@
           return new Date(year, month, 0).getDate();
         }
 
-        function generateDays() {
+        function generateDays(argDate,totalDays) {
 
-          var date = new Date(),
+          var date = argDate || new Date(),
               month = date.getMonth(),
               year = date.getFullYear(),
               days = daysInMonth((month + 1),year),
-              totalDays = configObj.totalDays,
+              totalDays = totalDays || configObj.totalDays,
               currYear = date.getFullYear(),
               currMonth = date.getMonth(),
               dates = [],
@@ -87,6 +91,10 @@
               index,
               dateObj,
               template;
+
+          if(totalDays % 6 !== 0) {
+            totalDays += (6 - (totalDays%6));
+          }
 
           for(index = 1; index <= totalDays; index++) {
 
@@ -103,6 +111,8 @@
               fullDay : (new Date(currYear, currMonth, counter)).toDateString()
             };
 
+            lastDate = new Date(currYear,currMonth,counter);
+
             counter++;
             currDay++;
 
@@ -118,12 +128,15 @@
 
           for(var i=0;i<totalDays;i++) {
             
-            if ((i+1)%6 === 0) {
-              counter += 1;
-            }
+
 
             calendar[counter] = calendar[counter] || [];
             calendar[counter].push(dates[i]);
+
+            if ((i+1)%6 === 0) {
+              counter += 1;
+              lastCounter += 1;
+            }
 
             if(valueToWatch === dates[i].fullDay) {
               $scope.activeSlide = counter;
@@ -139,8 +152,20 @@
           return valueToWatch === day;
         }
 
+        function slideHasChanged(index) {
+          if((index + 1) == lastCounter) {
+            lastDate.setDate(lastDate.getDate() + 1);
+            $scope.calendar = $scope.calendar.concat(generateDays(lastDate,10));
+            $timeout(function(){
+              window.dispatchEvent(new Event('resize'));
+            },1);
+          }
+          console.log(index,lastCounter,lastDate);
+        }
+
         $scope.isActive = isActive;
-        $scope.calendar = generateDays();
+        $scope.calendar = [].concat(generateDays());
+        $scope.slideHasChanged = slideHasChanged;
 
         template = "<ion-slide-box on-slide-changed=\"slideHasChanged($index)\" show-pager=\"false\" active-slide=\"activeSlide\"><ion-slide ng-repeat=\"week in calendar\"><div class=\"row\"><div ng-repeat=\"day in week\" ng-click=" + onSelectDate + '(day.fullDay)' + " class=\"col col-17\"><div class=\"row responsive-sm responsive-md responsive-lg text-center\"><div class=\"col\">{{day.month}}</div><div class=\"col\"><span ng-class=\"{'badge badge-positive' : isActive(day.fullDay)}\">{{day.date}}</span></div></div></div></div></ion-slide></ion-slide-box>";
         template = $compile(template)($scope);
